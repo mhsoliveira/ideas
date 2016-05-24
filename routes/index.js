@@ -51,18 +51,18 @@ router.get('/map', function(req,res) {
 
 router.post('/newidea', function(req, res) {
 
-var json = new Json();
+var jsonn = new Json();
 
-  json.name = req.body.name;
-  json.type = req.body.type;
-  json.coordinates = [req.body.long, req.body.lat];
+  jsonn.name = req.body.name;
+  jsonn.type = req.body.type;
+  jsonn.coordinates = [[req.body.coordinates1],[req.body.coordinates2]];
 
   // Save the beer and check for errors
-  json.save(function(err) {
+  jsonn.save(function(err) {
     if (err)
       res.send(err);
 
-    res.json({ message: 'You have got an idea!', data: json });
+    res.json({ message: 'You have got an idea!', data: jsonn });
   });
 });
 

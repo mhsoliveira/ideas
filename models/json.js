@@ -13,7 +13,7 @@ var JsonSchema = new Schema({
         opacity: {type: Number, default: 1},
         fillOpacity: {type: Number, default: 1}
     },
-    coordinates: {type: [[Number,Number]], default:''}
+    coordinates: {type: [], default:''}
 },{ collection: 'layercollection'});
 
 // Mongoose Model definition
