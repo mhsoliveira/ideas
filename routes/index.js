@@ -55,7 +55,7 @@ var jsonn = new Json();
 
   jsonn.name = req.body.name;
   jsonn.type = req.body.type;
-  jsonn.coordinates = [[req.body.coordinates1],[req.body.coordinates2]];
+  jsonn.coordinates = req.body.coordinates.split(',').map(Number)
 
   // Save the beer and check for errors
   jsonn.save(function(err) {

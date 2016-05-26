@@ -23,7 +23,7 @@ block content
 
         function addLayer(layer, name) {
             var leaf_layer;
-            if (layer.type == "MultiPoint") {
+            if (layer.type == "Point") {
                 leaf_layer = L.geoJson(layer, { pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, layer.style); }})
                 leaf_layer.bindPopup(layer.type);
             } else if (layer.type == "MultiLineString") {

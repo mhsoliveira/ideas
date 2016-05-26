@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
+
 var JsonSchema = new Schema({
     name: String,
     type: Schema.Types.Mixed,
@@ -13,7 +14,7 @@ var JsonSchema = new Schema({
         opacity: {type: Number, default: 1},
         fillOpacity: {type: Number, default: 1}
     },
-    coordinates: {type: [], default:''}
+    coordinates: { type: [Number], index: '2dsphere'}
 },{ collection: 'layercollection'});
 
 // Mongoose Model definition
