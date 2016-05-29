@@ -28,6 +28,14 @@ router.get('/mapjson/:name', function (req, res) {
     }
 });
 
+router.get('/jsoncall/:type', function (req, res) {
+    if (req.params.type) {
+        Json.find({ type: req.params.type },{}, function (err, docs) {
+            res.json(docs);
+        });
+    }
+});
+
 // routes/index.js
 /* GET layers json data. */
 router.get('/maplayers', function (req, res) {
@@ -43,8 +51,8 @@ router.get('/map', function(req,res) {
     Json.find({},{}, function(e,docs){
         res.render('map', {
             "jmap" : docs,
-            lat : 40.78854,
-            lng : -73.96374
+            lat : 42.3736,
+            lng : -71.1097
         });
     });
 });
@@ -55,6 +63,7 @@ var jsonn = new Json();
 
   jsonn.name = req.body.name;
   jsonn.type = req.body.type;
+  jsonn.desc = req.body.desc;
   jsonn.coordinates = req.body.coordinates.split(',').map(Number)
 
   // Save the beer and check for errors

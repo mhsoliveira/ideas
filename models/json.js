@@ -6,6 +6,7 @@ var JsonSchema = new Schema({
     name: String,
     type: Schema.Types.Mixed,
     color: {type: String, default: '#0000ff'},
+    desc: String,
     style: {
         radius: {type: Number, default: 8},
         fillColor: {type: String, default: '#00ce00'},

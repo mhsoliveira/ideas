@@ -25,7 +25,7 @@ block content
             var leaf_layer;
             if (layer.type == "Point") {
                 leaf_layer = L.geoJson(layer, { pointToLayer: function (feature, latlng) {return L.circleMarker(latlng, layer.style); }})
-                leaf_layer.bindPopup(layer.type);
+                leaf_layer.bindPopup(layer.desc);
             } else if (layer.type == "MultiLineString") {
                 leaf_layer = L.geoJson(layer, {style: layer.style });
                 leaf_layer.bindPopup(layer.type);
