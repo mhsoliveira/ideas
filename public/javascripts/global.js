@@ -10,6 +10,8 @@ $(document).ready(function() {
     $('#userList table tbody').on('click', 'td a.linkshowuser', showUserInfo);
     // Add User button click
     $('#btnAddIdea').on('click', addIdea);
+    // Delete User link click
+    $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteIdea);
 
 });
 
@@ -107,4 +109,43 @@ function addIdea(event) {
         alert('Please fill in all fields');
         return false;
     }
+};
+
+// Delete User
+function deleteIdea(event) {
+
+    event.preventDefault();
+
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this idea?');
+
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+
+        // If they did, do our delete
+        $.ajax({
+            type: 'DELETE',
+            url: '/deleteidea/' + $(this).attr('rel')
+        }).done(function( response ) {
+
+            // Check for a successful (blank) response
+            if (response.message === 'Idea deleted') {
+            }
+            else {
+                alert(err);
+            }
+
+            // Update the table
+            populateTable();
+
+        });
+
+    }
+    else {
+
+        // If they said no to the confirm, do nothing
+        return false;
+
+    }
+
 };

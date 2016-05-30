@@ -75,4 +75,15 @@ var jsonn = new Json();
   });
 });
 
+router.delete('/deleteidea/:id', function(req, res) {
+  // Use the Beer model to find a specific beer and remove it
+  Json.findByIdAndRemove(req.params.id, function(err) {
+    if (err)
+      res.send(err);
+
+    res.json({ message: 'Idea deleted' });
+  });
+});
+
+
 module.exports = router;

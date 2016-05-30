@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var JsonSchema = new Schema({
     name: String,
-    type: Schema.Types.Mixed,
+    type: {type: Schema.Types.Mixed, default:'Point'},
     color: {type: String, default: '#0000ff'},
     desc: String,
     style: {
